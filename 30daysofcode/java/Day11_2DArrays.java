@@ -1,8 +1,32 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+import java.util.*;
+import java.io.*;
+import java.math.*;
+import java.text.*;
 
-\f0\fs24 \cf0 Day11_2DArrays}
+public class Solution {
+    
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        int a[][] = new int[6][6];
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                a[i][j] = scanner.nextInt();
+            }
+        }
+        scanner.close();
+        int maxSum = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                int currentSum = a[i][j] + a[i][j + 1] + a[i][j + 2] +
+                                 a[i + 1][j + 1] +
+                                 a[i + 2][j] + a[i + 2][j + 1] + a[i + 2][j + 2];
+                if (currentSum > maxSum) {
+                    maxSum = currentSum;
+                }
+            }
+        }
+        System.out.println(maxSum);
+       
+    }
+}
